@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="test_data">
+        <item>测试0</item>
+        <item>测试1</item>
+        <item>测试2</item>
+        <item>测试3</item>
+        <item>测试4</item>
+        <item>测试5</item>
+        <item>测试6</item>
+        <item>测试7</item>
+        <item>测试8</item>
+        <item>测试9</item>
+        <item>测试10</item>
+        <item>测试11</item>
+    </string-array>
+</resources>
