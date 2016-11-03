@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="divider">#818181</color>
+    <color name="bgGrey">#eeeff0</color>
+
 </resources>

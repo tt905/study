@@ -1,10 +1,11 @@
 package com.mo.study;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.mo.study.ui.PieActivity;
 import com.mo.study.ui.RecyclerViewActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.btn1).setOnClickListener(this);
+        findViewById(R.id.btn2).setOnClickListener(this);
     }
 
     @Override
@@ -26,10 +28,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btn1:
                 intent.setClass(this, RecyclerViewActivity.class);
-                startActivity(intent);
+                break;
+            case R.id.btn2:
+                intent.setClass(this, PieActivity.class);
                 break;
 
         }
-
+        startActivity(intent);
     }
 }
