@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.mo.study.ui.PActivity;
+import com.mo.study.ui.PathActivity;
 import com.mo.study.ui.PieActivity;
 import com.mo.study.ui.RecyclerViewActivity;
 
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn1).setOnClickListener(this);
         findViewById(R.id.btn2).setOnClickListener(this);
         findViewById(R.id.btn3).setOnClickListener(this);
+        findViewById(R.id.btn4).setOnClickListener(this);
     }
 
     @Override
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn3:
                 intent.setClass(this, PActivity.class);
+                break;
+            case R.id.btn4:
+                intent.setClass(this, PathActivity.class);
                 break;
         }
         startActivity(intent);

@@ -27,11 +27,8 @@ public class PView extends View {
     private int bWidth;
     private int bHeight;
 //    private Paint mPaint;
-
     private Rect src;
     private Rect dst;
-
-    private ValueAnimator animator;
 
     public PView(Context context) {
         this(context, null);
@@ -39,7 +36,11 @@ public class PView extends View {
 
     public PView(Context context, AttributeSet attrs) {
         super(context, attrs);
-//        recording();
+        init();
+    }
+
+    private void init() {
+        //        recording();
         bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.cat);
         bHeight = bitmap.getHeight();
         bWidth = bitmap.getWidth();
@@ -47,8 +48,8 @@ public class PView extends View {
         src = new Rect(0, 0, 10 , bHeight);
         dst = new Rect(0, 0, 10, bHeight);
 
-        animator = ValueAnimator.ofInt(10, bWidth)
-                .setDuration(2000);
+        ValueAnimator animator = ValueAnimator.ofInt(10, bWidth).setDuration(2000);
+
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
