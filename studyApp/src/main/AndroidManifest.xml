@@ -27,7 +27,9 @@
         </activity>
         <activity android:name=".ui.PathActivity"
                   android:screenOrientation="portrait">
-
+        </activity>
+        <activity android:name=".ui.SpeedActivity"
+                  android:screenOrientation="portrait">
         </activity>
     </application>
 

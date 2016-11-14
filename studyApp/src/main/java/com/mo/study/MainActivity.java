@@ -9,6 +9,7 @@ import com.mo.study.ui.PActivity;
 import com.mo.study.ui.PathActivity;
 import com.mo.study.ui.PieActivity;
 import com.mo.study.ui.RecyclerViewActivity;
+import com.mo.study.ui.SpeedActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn2).setOnClickListener(this);
         findViewById(R.id.btn3).setOnClickListener(this);
         findViewById(R.id.btn4).setOnClickListener(this);
+        findViewById(R.id.btn5).setOnClickListener(this);
     }
 
     @Override
@@ -41,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn4:
                 intent.setClass(this, PathActivity.class);
+                break;
+            case R.id.btn5:
+                intent.setClass(this, SpeedActivity.class);
                 break;
         }
         startActivity(intent);
