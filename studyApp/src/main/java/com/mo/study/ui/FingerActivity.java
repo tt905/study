@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.mo.study.R;
 
-/** 随着手指移动
+/**
+ * 随着手指移动
  * Created by motw on 2016/11/23.
  */
 

@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.mo.study.R;
 
+/**
+ * 用canvas画图 bitmap
+ */
 public class PActivity extends AppCompatActivity {
 
     @Override

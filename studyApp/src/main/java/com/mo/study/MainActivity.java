@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.mo.study.ui.CoordinatorActivity;
 import com.mo.study.ui.FingerActivity;
 import com.mo.study.ui.PActivity;
 import com.mo.study.ui.PathActivity;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn4).setOnClickListener(this);
         findViewById(R.id.btn5).setOnClickListener(this);
         findViewById(R.id.btn6).setOnClickListener(this);
+        findViewById(R.id.btn7).setOnClickListener(this);
     }
 
     @Override
@@ -51,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn6:
                 intent.setClass(this, FingerActivity.class);
+                break;
+            case R.id.btn7:
+                intent.setClass(this, CoordinatorActivity.class);
                 break;
         }
         startActivity(intent);
