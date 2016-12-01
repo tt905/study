@@ -2,13 +2,10 @@ package com.mo.study.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.mo.study.R;
 
 /**
  *  Created by motw on 2016/11/14.
@@ -41,7 +38,7 @@ public class SpeedView extends View {
 
         imgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-        iconSlowSpeed = BitmapFactory.decodeResource(getResources(), R.drawable.slow_speed);
+//        iconSlowSpeed = BitmapFactory.decodeResource(getResources(), R.drawable.slow_speed);
     }
 
     @Override

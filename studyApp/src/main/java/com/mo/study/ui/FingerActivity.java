@@ -6,15 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.mo.study.R;
 
-/**
- *  Created by motw on 2016/11/14.
+/** 随着手指移动
+ * Created by motw on 2016/11/23.
  */
 
-public class SpeedActivity extends AppCompatActivity {
+public class FingerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_speed);
+        setContentView(R.layout.activity_finger);
+
     }
 }
