@@ -7,44 +7,35 @@
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
+        </activity>
+
+        <activity android:name=".MainActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.RecyclerViewActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".ui.PieActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".ui.PActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".ui.PathActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".ui.BezierActivity"
-            android:screenOrientation="portrait">
-        </activity>
 
-        <activity
-            android:name=".ui.FingerActivity"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity android:name=".ui.RecyclerViewActivity"/>
+        <activity android:name=".ui.PieActivity"/>
+        <activity android:name=".ui.PActivity"/>
+        <activity android:name=".ui.PathActivity"/>
+        <activity android:name=".ui.BezierActivity"/>
+        <activity android:name=".ui.FingerActivity"/>
 
         <activity
             android:name=".ui.CoordinatorActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
+
+        <activity android:name=".ui2.DatePickActivity"/>
+
     </application>
 
 </manifest>
