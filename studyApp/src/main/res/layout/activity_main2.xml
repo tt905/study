@@ -21,7 +21,7 @@
                 android:id="@+id/btn1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="日期选择"/>
+                android:text="line线"/>
         </LinearLayout>
 
         <LinearLayout

@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.mo.study.ui.RecyclerViewActivity;
+import com.mo.study.ui2.LineTextActivity;
 
 public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
         findViewById(R.id.btn1).setOnClickListener(this);
 //        findViewById(R.id.btn2).setOnClickListener(this);
@@ -31,7 +31,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
 
             case R.id.btn1:
-                intent.setClass(this, RecyclerViewActivity.class);
+                intent.setClass(this, LineTextActivity.class);
                 break;
 //            case R.id.btn2:
 //                intent.setClass(this, PieActivity.class);
