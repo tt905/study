@@ -1,1 +1,1 @@
-include ':studyApp', ':ref'
+include ':studyApp', ':ref', ':monitorDemo'

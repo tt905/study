@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-
+    <com.mo.study.widget.LineEditText
+        android:id="@+id/editor_$_note_editor"
+        android:layout_width="match_parent"
+        android:inputType="textMultiLine"
+        android:layout_height="match_parent"
+        android:background="@color/bgGrey"
+        android:padding="5dp"
+        android:scrollbars="vertical"
+        android:fadingEdge="vertical"
+        android:gravity="top"
+        android:textSize="18sp"
+        android:capitalize="sentences"/>
 </LinearLayout>
