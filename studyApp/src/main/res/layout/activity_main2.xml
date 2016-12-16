@@ -22,6 +22,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="line线"/>
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="卡片式Layout"/>
         </LinearLayout>
 
         <LinearLayout

@@ -49,6 +49,9 @@
             android:name=".ui2.LineTextActivity"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".ui2.CardActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

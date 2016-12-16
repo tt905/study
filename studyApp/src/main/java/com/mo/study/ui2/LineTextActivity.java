@@ -19,7 +19,7 @@ public class LineTextActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_date_pick);
+        setContentView(R.layout.activity_line_text);
 
     }
 
