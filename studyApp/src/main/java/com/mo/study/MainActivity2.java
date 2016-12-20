@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.mo.study.ui2.CardActivity;
 import com.mo.study.ui2.LineTextActivity;
+import com.mo.study.ui2.LoadingActivity;
 
 public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
 
@@ -17,7 +18,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
         findViewById(R.id.btn1).setOnClickListener(this);
         findViewById(R.id.btn2).setOnClickListener(this);
-//        findViewById(R.id.btn3).setOnClickListener(this);
+        findViewById(R.id.btn3).setOnClickListener(this);
 //        findViewById(R.id.btn4).setOnClickListener(this);
 //        findViewById(R.id.btn5).setOnClickListener(this);
 //        findViewById(R.id.btn6).setOnClickListener(this);
@@ -37,9 +38,9 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
             case R.id.btn2:
                 intent.setClass(this, CardActivity.class);
                 break;
-//            case R.id.btn3:
-//                intent.setClass(this, PActivity.class);
-//                break;
+            case R.id.btn3:
+                intent.setClass(this, LoadingActivity.class);
+                break;
 //            case R.id.btn4:
 //                intent.setClass(this, PathActivity.class);
 //                break;
