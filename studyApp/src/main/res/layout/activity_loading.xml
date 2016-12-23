@@ -9,5 +9,11 @@
         android:layout_width="50dip"
         android:layout_height="50dip"
         app:bar_color="@color/colorAccent"
-        app:bar_size="10dip"/>
+        app:bar_size="4dip"/>
+
+    <Button
+        android:id="@+id/btn_show_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="333"/>
 </LinearLayout>
