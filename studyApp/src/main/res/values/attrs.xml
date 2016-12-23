@@ -24,4 +24,9 @@
             <enum name="invisible" value="1"/>
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="LoadingBar">
+        <attr name="bar_color" format="color"/>
+        <attr name="bar_size" format="dimension"/>
+    </declare-styleable>
 </resources>

@@ -11,5 +11,6 @@
 
     <dimen name="fontDefault">12sp</dimen>
     <dimen name="speedMarginLeft">0dip</dimen>
+    <dimen name="collapsed_header_height">50dip</dimen>
 
 </resources>
