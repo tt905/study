@@ -29,7 +29,7 @@ public class LoadingDialog extends AlertDialog {
     //几个方便使用的static方法
 
     public static LoadingDialog show(Context context, String message) {
-        return show(context, message, true, false);
+        return show(context, message, true);
     }
 
     public static LoadingDialog show(Context context, String message, boolean cancelable) {

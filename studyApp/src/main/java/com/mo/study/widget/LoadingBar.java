@@ -16,6 +16,7 @@ import com.mo.study.R;
 import com.mo.study.utils.Utils;
 
 /**
+ * 模仿material design 的圈圈
  * Created by motw on 2016/12/22.
  */
 public class LoadingBar extends View {
@@ -77,7 +78,6 @@ public class LoadingBar extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         drawSecondAnimation(canvas);
-        canvas.restore();
         invalidate();
     }
 
@@ -86,7 +86,9 @@ public class LoadingBar extends View {
     float rotateAngle = 0;
     float limite = 0;
 
-
+    /**
+     * 圆弧动画，圆弧先增加，然后在减少，增加，不停重复。 在这过程中，不停的旋转画布。
+     */
     private void drawSecondAnimation(Canvas canvas){
         if (startAngle == limite) {
             sweepAngle += 6;
@@ -96,11 +98,18 @@ public class LoadingBar extends View {
             sweepAngle -= 6;
         }
         if (startAngle > limite + 290) {
+            if (startAngle> 360){
+                startAngle = startAngle % 360;  //不要无限增大
+            }
+
             limite = startAngle;
-            startAngle = limite;
+            startAngle = limite;// 从Limite处 重新开始增加,这样才能连接起来
             sweepAngle = 1;
         }
         rotateAngle += 4;//旋转角度
+        if (rotateAngle > 360){
+            rotateAngle = rotateAngle % 360;
+        }
         canvas.rotate(rotateAngle, mWidth / 2f, mHeight / 2f);
 
         //画出圆弧

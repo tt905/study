@@ -7,15 +7,18 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Scroller;
 
 import com.mo.study.R;
+import com.mo.study.utils.Utils;
 
 import java.lang.ref.WeakReference;
 
 /**
+ * 有bug ，快速滑动不支持
  * Created by motw on 2016/12/20.
  */
 public class ScrollingBehavior extends CoordinatorLayout.Behavior<RecyclerView> {
@@ -93,18 +96,41 @@ public class ScrollingBehavior extends CoordinatorLayout.Behavior<RecyclerView> 
     // dy 往上的正，往下是负
     @Override
     public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, RecyclerView child, View target, int dx, int dy, int[] consumed) {
-        if (dy < 0) {
-            return;
+        if (dy > 0){
+            // 往上滑
+            View view = getDependentView();
+            float oldTranslateY = view.getTranslationY();
+            float newTranslateY = oldTranslateY - dy;
+            Log.d("xdebug", "oldTranslateY  " + oldTranslateY + "  newTranslateY  " + newTranslateY + " dy  " + dy);
+
+            int height = view.getHeight();
+            //大于最小高度
+            if (height- Math.abs(oldTranslateY) > Utils.dpToPx(50, target.getResources())) {
+                //消费掉这个滑动
+                view.setTranslationY(newTranslateY);
+                consumed[1]  = dy;
+            }
+        }else{
+            //往下滑 不管,先让内部的子view消费
         }
-
-
     }
 
 
     @Override
     public void onNestedScroll(CoordinatorLayout coordinatorLayout, RecyclerView child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
-        if (dyUnconsumed > 0) {
-            return;
+        if (dyUnconsumed < 0) {
+            // 内部滚动没消费掉的滑动
+            View view = getDependentView();
+            float oldTranslateY = view.getTranslationY();
+            if (oldTranslateY >= 0){
+                return ;
+            }
+            float newTranslateY = oldTranslateY - dyUnconsumed;
+            Log.d("xdebug", "oldTranslateY2  " + oldTranslateY + "  newTranslateY2  " + newTranslateY + " dyUnconsumed  " + dyUnconsumed);
+            int height = view.getHeight();
+            if (height - Math.abs(oldTranslateY) > 0) {
+                view.setTranslationY(newTranslateY);
+            }
         }
 
     }
@@ -113,7 +139,6 @@ public class ScrollingBehavior extends CoordinatorLayout.Behavior<RecyclerView> 
     @Override
     public boolean onNestedPreFling(CoordinatorLayout coordinatorLayout, RecyclerView child, View target, float velocityX, float velocityY) {
         return  false;
-//        return onUserStopDragging(velocityY);
     }
 
     @Override
@@ -121,9 +146,6 @@ public class ScrollingBehavior extends CoordinatorLayout.Behavior<RecyclerView> 
         if (isScrolling){
             return ;
         }
-//        if (!isScrolling) {
-//            onUserStopDragging(800);
-//        }
     }
 
 
@@ -135,16 +157,4 @@ public class ScrollingBehavior extends CoordinatorLayout.Behavior<RecyclerView> 
         return dependentView.get();
     }
 
-    private Runnable flingRunnable = new Runnable() {
-        @Override
-        public void run() {
-            if (scroller.computeScrollOffset()) {
-                getDependentView().setTranslationY(scroller.getCurrY());
-                handler.post(this);
-            } else {
-                isExpanded = getDependentView().getTranslationY() != 0;
-                isScrolling = false;
-            }
-        }
-    };
 }
