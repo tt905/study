@@ -9,6 +9,7 @@ import com.mo.study.ui2.CardActivity;
 import com.mo.study.ui2.CoordinatorActivity2;
 import com.mo.study.ui2.LineTextActivity;
 import com.mo.study.ui2.LoadingActivity;
+import com.mo.study.ui2.ScrollerActivity;
 
 public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
 
@@ -21,7 +22,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.btn2).setOnClickListener(this);
         findViewById(R.id.btn3).setOnClickListener(this);
         findViewById(R.id.btn4).setOnClickListener(this);
-//        findViewById(R.id.btn5).setOnClickListener(this);
+        findViewById(R.id.btn5).setOnClickListener(this);
 //        findViewById(R.id.btn6).setOnClickListener(this);
 //        findViewById(R.id.btn7).setOnClickListener(this);
     }
@@ -45,9 +46,9 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
             case R.id.btn4:
                 intent.setClass(this, CoordinatorActivity2.class);
                 break;
-//            case R.id.btn5:
-//                intent.setClass(this, BezierActivity.class);
-//                break;
+            case R.id.btn5:
+                intent.setClass(this, ScrollerActivity.class);
+                break;
 //            case R.id.btn6:
 //                intent.setClass(this, FingerActivity.class);
 //                break;
