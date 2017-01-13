@@ -5,23 +5,5 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.mo.study.widget.ScrollerLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/scroll_to_btn"
-            android:layout_width="100dip"
-            android:layout_height="200dip"
-            android:gravity="center"
-            android:text="scrollTo"/>
-
-        <Button
-            android:id="@+id/scroll_by_btn"
-            android:layout_width="100dip"
-            android:layout_height="200dip"
-            android:gravity="center"
-            android:text="scrollBybybyby"/>
-
-    </com.mo.study.widget.ScrollerLayout>
 </LinearLayout>
