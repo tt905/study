@@ -14,8 +14,9 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
 
-        int i = 2;
-        int y = i <<4;
-        System.out.println(y);
+        Integer i = new Integer(-1);
+
+
+        System.out.println(i);
     }
 }
