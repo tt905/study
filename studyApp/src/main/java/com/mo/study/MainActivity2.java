@@ -25,6 +25,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.btn5).setOnClickListener(this);
 //        findViewById(R.id.btn6).setOnClickListener(this);
 //        findViewById(R.id.btn7).setOnClickListener(this);
+        findViewById(R.id.btn020).setOnClickListener(this);
     }
 
     @Override
@@ -55,6 +56,8 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 //            case R.id.btn7:
 //                intent.setClass(this, CoordinatorActivity.class);
 //                break;
+            case R.id.btn020:
+                return;
         }
         startActivity(intent);
     }

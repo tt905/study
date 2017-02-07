@@ -20,6 +20,7 @@ import com.mo.study.R;
 public class CoordinatorActivity extends AppCompatActivity {
 
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
