@@ -55,7 +55,7 @@
                 android:id="@+id/btn020"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="test"/>
+                android:text="万能适配器"/>
 
         </LinearLayout>
 

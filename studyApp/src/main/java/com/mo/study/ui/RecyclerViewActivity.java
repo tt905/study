@@ -16,9 +16,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * RecyclerView自动加载更多
  * Created by motw on 2016/10/27.
  */
-
 public class RecyclerViewActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;

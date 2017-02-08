@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.mo.study.ui.RecyclerViewActivity2;
 import com.mo.study.ui2.CardActivity;
 import com.mo.study.ui2.CoordinatorActivity2;
 import com.mo.study.ui2.LineTextActivity;
@@ -57,7 +58,8 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 //                intent.setClass(this, CoordinatorActivity.class);
 //                break;
             case R.id.btn020:
-                return;
+                intent.setClass(this, RecyclerViewActivity2.class);
+                break;
         }
         startActivity(intent);
     }
