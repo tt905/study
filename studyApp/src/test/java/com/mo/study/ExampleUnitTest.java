@@ -1,11 +1,8 @@
 package com.mo.study;
 
-import com.mo.study.model.PUser;
-import com.mo.study.model.TestAnno;
+import android.os.SystemClock;
 
 import org.junit.Test;
-
-import java.lang.reflect.Field;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,15 +16,16 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
 
-        Class t = PUser.class;
-        //使用反射来获取注解的信息
-        for (Field f : t.getDeclaredFields()){
-            if (f.isAnnotationPresent(TestAnno.class)){
-                TestAnno name = f.getAnnotation(TestAnno.class);
-                System.out.println(name.name());
-                System.out.println(name.value());
-            }
-        }
-
+//        Class t = PUser.class;
+//        //使用反射来获取注解的信息
+//        for (Field f : t.getDeclaredFields()){
+//            if (f.isAnnotationPresent(TestAnno.class)){
+//                TestAnno name = f.getAnnotation(TestAnno.class);
+//                System.out.println(name.name());
+//                System.out.println(name.value());
+//            }
+//        }
+        long startTimeMs = SystemClock.elapsedRealtime();
+        System.out.println(startTimeMs);
     }
 }

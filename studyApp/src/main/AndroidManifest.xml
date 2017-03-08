@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.mo.study">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
@@ -64,6 +66,14 @@
         <activity
             android:name=".ui.RecyclerViewActivity2"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".network.VolleyActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".ui2.DialogActivity"
+            android:screenOrientation="portrait"
+            />
     </application>
 
 </manifest>

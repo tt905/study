@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="28dip"
+              android:paddingLeft="12dip"
+              android:paddingRight="12dip"
+              android:paddingBottom="18dip"
+              android:background="#edf3ff"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title_dialog"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"/>
+
+    <EditText
+        android:id="@+id/input_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dip"
+        android:imeOptions="actionDone"
+        android:hint="输入理由"
+        android:textColor="#4675e5"
+        android:paddingLeft="5dip"
+        android:layout_marginLeft="4dip"
+        android:layout_marginRight="4dip"
+        android:inputType="text"/>
+</LinearLayout>

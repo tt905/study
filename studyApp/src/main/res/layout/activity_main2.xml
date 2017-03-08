@@ -43,6 +43,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="scroller滑动"/>
+
+            <Button
+                android:id="@+id/btn6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="volley"/>
         </LinearLayout>
 
         <LinearLayout
@@ -56,7 +62,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="万能适配器"/>
-
+            <Button
+                android:id="@+id/btn021"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="dialog对话框"/>
         </LinearLayout>
 
     </LinearLayout>
