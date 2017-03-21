@@ -35,7 +35,7 @@ public class SpinnerActivity extends AppCompatActivity {
     }
 
     private List<String> getData() {
-       return Arrays.asList("橘子","BBdk","gdlgd", "gdj454");
+       return Arrays.asList("橘子","BBdk","gdlgd", "gdj454","什么是是非","都没有又所谓","只看到绝色");
     }
 
 }

@@ -11,7 +11,6 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.mo.study.R;
 import com.mo.study.adapter.FinalSpinnerAdapter;
@@ -20,7 +19,7 @@ import com.mo.study.adapter.FinalSpinnerAdapter;
  * 模仿一个spinner，原生的太难定制样式了。<br>
  * Created by motw on 2017/3/9.
  */
-public class FinalSpinner extends TextView implements View.OnClickListener, AdapterView.OnItemClickListener {
+public class FinalSpinner extends android.support.v7.widget.AppCompatTextView implements View.OnClickListener, AdapterView.OnItemClickListener {
     private String TAG = FinalSpinner.class.getSimpleName();
 
     private PopupWindow mPopupWindow;
@@ -31,6 +30,7 @@ public class FinalSpinner extends TextView implements View.OnClickListener, Adap
     private Drawable arrowUpDrawable; //向下箭头 ->
 
     private OnItemClickListener mListener;
+    private int popupWindowMaxHeight;
 
     public interface OnItemClickListener{
         void onItemClick(int position);
@@ -51,6 +51,8 @@ public class FinalSpinner extends TextView implements View.OnClickListener, Adap
     }
 
     private void init(Context context, AttributeSet attrs) {
+        popupWindowMaxHeight = 400; //default
+
         //初始化下拉列表
         mListView = new ListView(context);
         mListView.setCacheColorHint(0x00000000);
@@ -59,7 +61,6 @@ public class FinalSpinner extends TextView implements View.OnClickListener, Adap
         mListView.setBackgroundResource(R.drawable.bg_item_spinner);
         mListView.setItemsCanFocus(true);
         mListView.setOnItemClickListener(this);
-
 
         //初始化弹出窗口
         mPopupWindow = new PopupWindow(context);
@@ -89,10 +90,11 @@ public class FinalSpinner extends TextView implements View.OnClickListener, Adap
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
+        popupWindowMaxHeight = 5 * h;
         //在这里设置下拉框高宽
         mPopupWindow.setWidth(w);
-//        mPopupWindow.setHeight(calculatePopupWindowHeight());
-        mPopupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+        mPopupWindow.setHeight(calculatePopupWindowHeight());
+//        mPopupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
     }
 
     @Override
@@ -114,7 +116,7 @@ public class FinalSpinner extends TextView implements View.OnClickListener, Adap
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //点击某一项
-        String select = mAdapter.getItem(position).toString();
+        String select = mAdapter.getItem(position);
 //        Log.d(TAG,"position: " + position + " value: " + select );
         mPopupWindow.dismiss();
         setText(select);
@@ -145,6 +147,34 @@ public class FinalSpinner extends TextView implements View.OnClickListener, Adap
     public void setItemClickListener(OnItemClickListener listener){
         this.mListener = listener;
     }
+
+
+    /**
+     * Set the maximum height of the dropdown menu.
+     *
+     * @param height
+     *     the height in pixels
+     */
+    public void setDropdownMaxHeight(int height) {
+        popupWindowMaxHeight = height;
+        mPopupWindow.setHeight(calculatePopupWindowHeight());
+    }
+
+
+    private int calculatePopupWindowHeight() {
+        if (mAdapter == null) {
+            return WindowManager.LayoutParams.WRAP_CONTENT;
+        }
+        float listViewHeight = mAdapter.getCount() * getHeight();
+
+        if (popupWindowMaxHeight > 0 && listViewHeight > popupWindowMaxHeight) {
+            return popupWindowMaxHeight;
+        } else {
+            return (int) listViewHeight;
+        }
+//        return WindowManager.LayoutParams.WRAP_CONTENT;
+    }
+
 
     /**
      * Return a drawable object associated with a particular resource ID.

@@ -11,11 +11,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
-
-        <activity android:name=".MainActivity2">
+        <activity android:name=".WelcomeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -23,6 +21,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".MainActivity">
+        </activity>
+        <activity android:name=".MainActivity2">
+        </activity>
         <activity
             android:name=".ui.RecyclerViewActivity"
             android:screenOrientation="portrait"/>
@@ -41,16 +43,13 @@
         <activity
             android:name=".ui.FingerActivity"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".ui.CoordinatorActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
-
         <activity
             android:name=".ui2.LineTextActivity"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".ui2.CardActivity"
             android:screenOrientation="portrait"/>
@@ -68,15 +67,13 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".network.VolleyActivity"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui2.DialogActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".ui2.SpinnerActivity"
-                  android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui2.SpinnerActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

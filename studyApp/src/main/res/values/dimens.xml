@@ -13,4 +13,6 @@
     <dimen name="speedMarginLeft">0dip</dimen>
     <dimen name="collapsed_header_height">50dip</dimen>
 
+    <dimen name="spinnerItemHeight">30dp</dimen>
+
 </resources>
