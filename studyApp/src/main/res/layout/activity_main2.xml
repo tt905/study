@@ -67,6 +67,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="dialog对话框"/>
+
+            <Button
+                android:id="@+id/btn022"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="spinner测试"/>
         </LinearLayout>
 
     </LinearLayout>

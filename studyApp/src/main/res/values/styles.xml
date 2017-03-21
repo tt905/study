@@ -15,4 +15,8 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <style name="spinner_dropdown_style" parent="Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:background">@color/white</item>
+    </style>
+
 </resources>

@@ -14,4 +14,11 @@
         <item>测试10</item>
         <item>测试11</item>
     </string-array>
+
+    <string-array name="spinner_array">
+        <item>spinner01</item>
+        <item>赵敏</item>
+        <item>周芷若</item>
+        <item>小昭</item>
+    </string-array>
 </resources>

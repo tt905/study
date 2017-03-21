@@ -13,6 +13,7 @@ import com.mo.study.ui2.DialogActivity;
 import com.mo.study.ui2.LineTextActivity;
 import com.mo.study.ui2.LoadingActivity;
 import com.mo.study.ui2.ScrollerActivity;
+import com.mo.study.ui2.SpinnerActivity;
 
 public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,6 +31,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 //        findViewById(R.id.btn7).setOnClickListener(this);
         findViewById(R.id.btn020).setOnClickListener(this);
         findViewById(R.id.btn021).setOnClickListener(this);
+        findViewById(R.id.btn022).setOnClickListener(this);
     }
 
     @Override
@@ -65,6 +67,9 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btn021:
                 intent.setClass(this, DialogActivity.class);
+                break;
+            case R.id.btn022:
+                intent.setClass(this, SpinnerActivity.class);
                 break;
         }
         startActivity(intent);
