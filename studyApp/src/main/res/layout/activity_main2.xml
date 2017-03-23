@@ -73,6 +73,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="spinner测试"/>
+
+            <Button
+                android:id="@+id/btn023"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="bitmap研究"/>
         </LinearLayout>
 
     </LinearLayout>

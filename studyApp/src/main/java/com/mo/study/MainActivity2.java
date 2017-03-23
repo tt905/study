@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.mo.study.network.VolleyActivity;
 import com.mo.study.ui.RecyclerViewActivity2;
+import com.mo.study.ui2.BitmapActivity;
 import com.mo.study.ui2.CardActivity;
 import com.mo.study.ui2.CoordinatorActivity2;
 import com.mo.study.ui2.DialogActivity;
@@ -32,6 +33,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.btn020).setOnClickListener(this);
         findViewById(R.id.btn021).setOnClickListener(this);
         findViewById(R.id.btn022).setOnClickListener(this);
+        findViewById(R.id.btn023).setOnClickListener(this);
     }
 
     @Override
@@ -70,6 +72,9 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btn022:
                 intent.setClass(this, SpinnerActivity.class);
+                break;
+            case R.id.btn023:
+                intent.setClass(this, BitmapActivity.class);
                 break;
         }
         startActivity(intent);

@@ -1,7 +1,5 @@
 package com.mo.study;
 
-import android.os.SystemClock;
-
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -25,7 +23,10 @@ public class ExampleUnitTest {
 //                System.out.println(name.value());
 //            }
 //        }
-        long startTimeMs = SystemClock.elapsedRealtime();
-        System.out.println(startTimeMs);
+        float result = 1008f * 1008 * (420/320) * 4;
+//        float a = 4064256 / result;
+        System.out.println(result);
+        float b = result/1024/1024;
+        System.out.println(b);
     }
 }
