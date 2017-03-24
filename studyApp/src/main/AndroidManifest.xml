@@ -78,6 +78,9 @@
         <activity android:name=".ui2.BitmapActivity"
                   android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".ui2.ConstraintLayoutActivity"
+                  android:screenOrientation="portrait">
+        </activity>
 
     </application>
 
