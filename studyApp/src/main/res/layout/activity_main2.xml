@@ -55,6 +55,12 @@
                 android:layout_height="wrap_content"
                 android:text="ConstraintLayout用法研究"/>
 
+            <Button
+                android:id="@+id/btn8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="快捷方式"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -85,6 +91,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="bitmap研究"/>
+
+            <Button
+                android:id="@+id/btn024"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="popupwindow7.0"/>
+
         </LinearLayout>
 
     </LinearLayout>

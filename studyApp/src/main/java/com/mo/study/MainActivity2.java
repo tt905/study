@@ -14,10 +14,13 @@ import com.mo.study.ui2.CoordinatorActivity2;
 import com.mo.study.ui2.DialogActivity;
 import com.mo.study.ui2.LineTextActivity;
 import com.mo.study.ui2.LoadingActivity;
+import com.mo.study.ui2.PopupActivity;
 import com.mo.study.ui2.ScrollerActivity;
 import com.mo.study.ui2.SpinnerActivity;
 
 public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
+
+    public static final String ACTION_ADD_SHORTCUT = "com.android.launcher.action.INSTALL_SHORTCUT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +34,34 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.btn5).setOnClickListener(this);
         findViewById(R.id.btn6).setOnClickListener(this);
         findViewById(R.id.btn7).setOnClickListener(this);
+        findViewById(R.id.btn8).setOnClickListener(this);
         findViewById(R.id.btn020).setOnClickListener(this);
         findViewById(R.id.btn021).setOnClickListener(this);
         findViewById(R.id.btn022).setOnClickListener(this);
         findViewById(R.id.btn023).setOnClickListener(this);
+        findViewById(R.id.btn024).setOnClickListener(this);
+
+
+    }
+
+    private void addShortcut(String name) {
+        Intent addShortcutIntent = new Intent(ACTION_ADD_SHORTCUT);
+        // 名字
+        addShortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, name);
+        // 不允许重复创建
+        addShortcutIntent.putExtra("duplicate", false);// 经测试不是根据快捷方式的名字判断重复的
+        // 图标
+        addShortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(MainActivity2.this, R.mipmap.ic_launcher));
+
+        // 设置关联程序
+        Intent launcherIntent = new Intent(Intent.ACTION_MAIN);
+        launcherIntent.setClass(this, MainActivity2.class);
+        launcherIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+
+        addShortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, launcherIntent);
+
+        // 发送广播
+        sendBroadcast(addShortcutIntent);
     }
 
     @Override
@@ -65,6 +92,9 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
             case R.id.btn7:
                 intent.setClass(this, ConstraintLayoutActivity.class);
                 break;
+            case R.id.btn8:
+                addShortcut("学习app");
+                return;
             case R.id.btn020:
                 intent.setClass(this, RecyclerViewActivity2.class);
                 break;
@@ -76,6 +106,9 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btn023:
                 intent.setClass(this, BitmapActivity.class);
+                break;
+            case R.id.btn024:
+                intent.setClass(this, PopupActivity.class);
                 break;
         }
         startActivity(intent);

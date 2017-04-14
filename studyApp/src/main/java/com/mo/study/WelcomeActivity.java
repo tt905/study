@@ -11,12 +11,14 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 start();
             }
-        }, 800);
+        }, 2800);
     }
 
     private void start() {
@@ -25,4 +27,6 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(start);
         this.finish();
     }
+
+
 }
