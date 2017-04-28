@@ -97,7 +97,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="popupwindow7.0"/>
-
+            <Button
+                android:id="@+id/btn025"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="定位研究"/>
         </LinearLayout>
 
     </LinearLayout>

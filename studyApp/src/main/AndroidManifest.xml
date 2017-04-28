@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.mo.study">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> <!-- 定位权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> <!-- 定位权限 -->
+
     <!-- 添加快捷方式 -->
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
     <!-- 移除快捷方式 -->
@@ -93,6 +99,9 @@
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".ui2.PopupActivity">
+        </activity>
+        <activity android:name=".ui2.PositionActivity"
+                  android:screenOrientation="portrait">
         </activity>
     </application>
 

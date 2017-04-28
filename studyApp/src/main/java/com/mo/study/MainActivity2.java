@@ -15,6 +15,7 @@ import com.mo.study.ui2.DialogActivity;
 import com.mo.study.ui2.LineTextActivity;
 import com.mo.study.ui2.LoadingActivity;
 import com.mo.study.ui2.PopupActivity;
+import com.mo.study.ui2.PositionActivity;
 import com.mo.study.ui2.ScrollerActivity;
 import com.mo.study.ui2.SpinnerActivity;
 
@@ -40,6 +41,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.btn022).setOnClickListener(this);
         findViewById(R.id.btn023).setOnClickListener(this);
         findViewById(R.id.btn024).setOnClickListener(this);
+        findViewById(R.id.btn025).setOnClickListener(this);
 
 
     }
@@ -109,6 +111,9 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btn024:
                 intent.setClass(this, PopupActivity.class);
+                break;
+            case R.id.btn025:
+                intent.setClass(this, PositionActivity.class);
                 break;
         }
         startActivity(intent);
