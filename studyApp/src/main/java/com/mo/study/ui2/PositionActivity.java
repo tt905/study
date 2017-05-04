@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mo.study.R;
+
+import java.util.List;
 
 /**
  * # 通过TelephonyManager 获取lac:mcc:mnc:cell-id
@@ -172,7 +175,6 @@ public class PositionActivity extends AppCompatActivity implements View.OnClickL
         @Override
         public void onLocationChanged(final Location location) {
             Log.d(TAG, "onLocationChanged");
-
             //只定位一次
 //            if (location != null){
 //                mLocationManager.removeUpdates(locationGpsListener);
@@ -248,13 +250,15 @@ public class PositionActivity extends AppCompatActivity implements View.OnClickL
         int lac;
         int cid;
 
-        // 中国移动和中国联通获取LAC、CID的方式
+        //电信是cdma
         if(mTelephonyManager.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA){
             CdmaCellLocation cdmaCellLocation = (CdmaCellLocation)mTelephonyManager.getCellLocation();
             cid = cdmaCellLocation.getBaseStationId(); //获取cdma基站识别标号 BID
             lac = cdmaCellLocation.getNetworkId(); //获取cdma网络编号NID
             int sid = cdmaCellLocation.getSystemId(); //用谷歌API的话cdma网络的mnc要用这个getSystemId()取得→SID
+            Log.d("debug", "longitude: " + cdmaCellLocation.getBaseStationLongitude() + " latitude: " + cdmaCellLocation.getBaseStationLatitude());
         }else{
+            // 中国移动和中国联通获取LAC、CID的方式
             GsmCellLocation gsmCellLocation = (GsmCellLocation) mTelephonyManager.getCellLocation();
             cid = gsmCellLocation.getCid(); //获取gsm基站识别标号
             lac = gsmCellLocation.getLac(); //获取gsm网络编号
@@ -297,10 +301,17 @@ public class PositionActivity extends AppCompatActivity implements View.OnClickL
     private void getWiFiPosition(){
 
         WifiInfo info = mWifiManager.getConnectionInfo();
-        String bssid = info.getBSSID();
-        String ssid = info.getSSID();
-        int rssi = info.getRssi();
-        rssi = WifiManager.calculateSignalLevel(rssi, 4);
-        tvWifiInfo.setText("bssid: " + bssid + "\nssid: " +  ssid + "\n rssi:" + rssi);
+        if (info != null) {
+            String bssid = info.getBSSID();
+            String ssid = info.getSSID();
+            int rssi = info.getRssi();
+            rssi = WifiManager.calculateSignalLevel(rssi, 4);
+            tvWifiInfo.setText("bssid: " + bssid + "\n  ssid: " + ssid + " rssi:" + rssi + "\n networkID: " + info.getNetworkId());
+        }
+
+        List<ScanResult> results = mWifiManager.getScanResults();
+        for (ScanResult wifi : results) {
+            Log.d(TAG, "BSSID: " + wifi.BSSID);
+        }
     }
 }
