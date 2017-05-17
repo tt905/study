@@ -1,1 +1,1 @@
-include ':studyApp', ':ref', ':monitorDemo'
+include ':studyApp', ':monitorDemo', ':aidlclient', ':aidlservice'
