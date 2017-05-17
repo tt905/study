@@ -29,9 +29,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 绑定本地服务
 //        bindService(new Intent(this, ClientService.class), conn, Service.BIND_AUTO_CREATE);
         Intent intent = new Intent("com.mo.aidl");
         intent.setPackage("com.mo.aidlservice");
+
+        //绑定远程服务
         bindService(intent, conn2, Context.BIND_AUTO_CREATE);
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
@@ -90,7 +93,9 @@ public class MainActivity extends AppCompatActivity {
             super.handleMessage(msg);
             switch (msg.what){
                 case 1:
+                    String text = "what: " + msg.what + "\narg1: " + msg.arg1 + "\narg2: " + msg.arg2;
                     Log.d("debug", "arg1: " + msg.arg1 + "arg2: " + msg.arg2);
+                    tvNumber.setText(text);
                     break;
             }
 
