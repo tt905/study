@@ -25,6 +25,13 @@
                 <action android:name="com.mo.aidl"> </action>
             </intent-filter>
         </service>
+        <service android:name=".AIDLService"
+                 android:enabled="true"
+                 android:exported="true">
+            <intent-filter>
+                <action android:name="com.mo.remote.aidl"> </action>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

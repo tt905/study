@@ -18,72 +18,74 @@ import android.widget.TextView;
 /**
  * aidl 使用
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ClientService mService;
-    Messenger mMessenger = null;
+    ClientLocalService mLocalService;
+    Messenger mMessenger = null; //接收消息用
+
     private TextView tvNumber;
+    private TextView tvLog2;
+
+    boolean localBind = false;
+    boolean remoteBind = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 绑定本地服务
-//        bindService(new Intent(this, ClientService.class), conn, Service.BIND_AUTO_CREATE);
-        Intent intent = new Intent("com.mo.aidl");
-        intent.setPackage("com.mo.aidlservice");
-
-        //绑定远程服务
-        bindService(intent, conn2, Context.BIND_AUTO_CREATE);
-
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int number = mService.getRandomNumber();
-                tvNumber.setText("random: " + number);
-            }
-        });
-
-        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Message msg = Message.obtain(null, 1, 2, 3);
-                try {
-                    msg.replyTo = receiverMessenger;
-                    mMessenger.send(msg);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        findViewById(R.id.button).setOnClickListener(this);
+        findViewById(R.id.button2).setOnClickListener(this);
+        findViewById(R.id.button3).setOnClickListener(this);
 
         tvNumber = (TextView) findViewById(R.id.textView);
+        tvLog2 = (TextView) findViewById(R.id.textView2);
     }
 
+
+    /**
+     * 绑定远程服务
+     */
+    private void bindRemote() {
+        Intent intent = new Intent("com.mo.aidl");
+        intent.setPackage("com.mo.aidlservice");
+        bindService(intent, conn2, Context.BIND_AUTO_CREATE);
+    }
+
+    /**
+     * 检测本地服务连接状态
+     */
     private ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.d("debug", "连接上服务。。。");
-            mService = ((ClientService.LocalBinder) service).getService();
+            localBind = true;
+            mLocalService = ((ClientLocalService.LocalBinder) service).getService();
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
             Log.d("debug", "与服务断开连接。。。");
+            localBind = false;
         }
     };
 
+    /**
+     * 检测远程服务连接状态
+     */
     private ServiceConnection conn2 = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            Log.d("debug", "连接上服务。。。");
+            Log.d("debug", "连接上远程服务。。。");
+            remoteBind = true;
             mMessenger = new Messenger(service);
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
-            Log.d("debug", "与服务断开连接。。。");
+            Log.d("debug", "与远程服务断开连接。。。");
+            remoteBind = false;
         }
     };
 
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     String text = "what: " + msg.what + "\narg1: " + msg.arg1 + "\narg2: " + msg.arg2;
                     Log.d("debug", "arg1: " + msg.arg1 + "arg2: " + msg.arg2);
-                    tvNumber.setText(text);
+                    tvLog2.setText(text);
                     break;
             }
 
@@ -105,7 +107,45 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        unbindService(conn);
-        unbindService(conn2);
+        if (localBind) {
+            unbindService(conn);
+        }
+        if (remoteBind) {
+            unbindService(conn2);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button:
+                // 绑定本地服务
+                if (!localBind) {
+                    bindService(new Intent(this, ClientLocalService.class), conn, Context.BIND_AUTO_CREATE);
+                    return;
+                }
+
+                int number = mLocalService.getRandomNumber();
+                tvNumber.setText("random: " + number);
+                break;
+            case R.id.button2:
+                //先绑定
+                if (!remoteBind){
+                    bindRemote();
+                    return;
+                }
+
+                Message msg = Message.obtain(null, 1, 2, 3);
+                try {
+                    msg.replyTo = receiverMessenger;
+                    mMessenger.send(msg);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.button3:
+                startActivity(new Intent(MainActivity.this, AIDLActivity.class));
+                break;
+        }
     }
 }

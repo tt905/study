@@ -1,14 +1,13 @@
 package com.mo.aidlservice;
 
 import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
+import android.os.Process;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -16,6 +15,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     TextView tvLog;
+    boolean bindLocal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,20 +24,23 @@ public class MainActivity extends AppCompatActivity {
         tvLog = (TextView) findViewById(R.id.tvLog);
 
         //绑定本地服务
-        Intent intent = new Intent(this, MessengerService.class);
-        bindService(intent, conn, Context.BIND_AUTO_CREATE);
-
+//        Intent intent = new Intent(this, MessengerService.class);
+//        bindService(intent, conn, Context.BIND_AUTO_CREATE);
+        tvLog.setText("pid: " + Process.myPid());
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbindService(conn);
+        if (bindLocal) {
+            unbindService(conn);
+        }
     }
 
     ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+            bindLocal = true;
             Messenger messenger = new Messenger(service);
             Message msg = Message.obtain(null, 2);
             msg.replyTo = receiverMessenger;
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
-
+            bindLocal = false;
         }
     };
 

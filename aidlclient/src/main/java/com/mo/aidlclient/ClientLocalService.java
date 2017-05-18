@@ -12,7 +12,7 @@ import java.util.Random;
  *  同一个应用进程的通信，binder
  * Created by motw on 2017/5/17.
  */
-public class ClientService extends Service {
+public class ClientLocalService extends Service {
 
     // Binder given to clients
     private final IBinder mBinder = new LocalBinder();
@@ -32,9 +32,9 @@ public class ClientService extends Service {
     }
 
     public class LocalBinder extends Binder {
-        public ClientService getService() {
+        public ClientLocalService getService() {
             // Return this instance of LocalService so clients can call public methods
-            return ClientService.this;
+            return ClientLocalService.this;
         }
     }
 
